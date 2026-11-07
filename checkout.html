@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسویه حساب | HINA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-main">
+        <a href="index.html" class="logo">
+          <img src="assets/logo-sm.png" alt="HINA Shoes" class="logo-img">
+        </a>
+        <div style="font-size:14px;color:var(--text-muted);">تسویه حساب امن</div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="cart-layout">
+        <div>
+          <div class="contact-form" style="margin-bottom:24px;">
+            <h3 style="font-size:18px;font-weight:800;color:var(--primary-dark);margin-bottom:20px;">اطلاعات گیرنده</h3>
+            <form id="checkoutForm" onsubmit="submitCheckout(event)">
+              <div class="form-group"><label>نام و نام خانوادگی *</label><input type="text" required placeholder="نام کامل"></div>
+              <div class="form-row">
+                <div class="form-group"><label>شماره موبایل *</label><input type="tel" required placeholder="۰۹۱۲..."></div>
+                <div class="form-group"><label>کد پستی</label><input type="text" placeholder="کد پستی"></div>
+              </div>
+              <div class="form-group"><label>آدرس کامل *</label><textarea rows="3" required placeholder="استان، شهر، خیابان، پلاک..."></textarea></div>
+              <div class="form-group"><label>توضیحات (اختیاری)</label><textarea rows="2" placeholder="سایز خاص، رنگ، ..."></textarea></div>
+              <h3 style="font-size:16px;font-weight:700;margin:24px 0 12px;color:var(--primary-dark);">روش پرداخت</h3>
+              <div style="display:flex;gap:12px;margin-bottom:20px;" id="payMethods">
+                <label class="pay-method-card active" onclick="document.querySelectorAll('.pay-method-card').forEach(c=>c.classList.remove('active'));this.classList.add('active');">
+                  <input type="radio" name="pay" checked style="display:none;">
+                  <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                  درگاه بانکی
+                </label>
+                <label class="pay-method-card" onclick="document.querySelectorAll('.pay-method-card').forEach(c=>c.classList.remove('active'));this.classList.add('active');">
+                  <input type="radio" name="pay" style="display:none;">
+                  <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                  کارت به کارت
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">تأیید و پرداخت آنلاین</button>
+            </form>
+          </div>
+        </div>
+        <div class="cart-summary">
+          <h3>سفارش شما</h3>
+          <div id="orderItems"></div>
+          <div class="summary-row total" style="margin-top:16px;"><span>جمع کل</span><span id="orderTotal">۰</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>
+    const cart = getCart();
+    if (cart.length === 0) location.href = 'cart.html';
+    let total = 0;
+    document.getElementById('orderItems').innerHTML = cart.map(i => {
+      total += i.price * i.qty;
+      return `<div class="summary-row"><span>${i.name} × ${i.qty}</span><span>${formatPrice(i.price * i.qty)}</span></div>`;
+    }).join('');
+    document.getElementById('orderTotal').textContent = formatPrice(total);
+    function submitCheckout(e) {
+      e.preventDefault();
+      localStorage.removeItem('hina_cart');
+      showToast('سفارش با موفقیت ثبت شد! کد: HINA-' + Math.floor(100000 + Math.random() * 900000));
+      setTimeout(() => location.href = 'account.html', 2000);
+    }
+  </script>
+</body>
+</html>

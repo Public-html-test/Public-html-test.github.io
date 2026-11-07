@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پنل مدیریت | HINA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="logo">
+        <a href="../index.html"><img src="../assets/logo-sm.png" alt="HINA" class="logo-img"></a>
+      </div>
+            <nav class="admin-nav">
+        <a href="index.html" class="active">داشبورد</a>
+        <a href="products.html">محصولات</a>
+        <a href="orders.html">سفارش‌ها</a>
+        <a href="customers.html">مشتریان</a>
+        <a href="content.html">محتوای سایت</a>
+        <a href="reports.html">گزارش‌ها</a>
+        <a href="settings.html">تنظیمات</a>
+        <a href="../index.html" style="margin-top:24px;opacity:0.7;">بازگشت به فروشگاه</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>داشبورد</h1>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <span style="font-size:13px;color:var(--text-muted);">مدیر سیستم</span>
+          <div class="dash-avatar" style="width:40px;height:40px;font-size:16px;">A</div>
+        </div>
+      </div>
+      <div class="admin-stats">
+        <div class="admin-stat"><div class="num">۱۲۸</div><div class="label">سفارش امروز</div></div>
+        <div class="admin-stat"><div class="num">۴۸.۲م</div><div class="label">فروش امروز (تومان)</div></div>
+        <div class="admin-stat"><div class="num">۸۴۲</div><div class="label">محصول فعال</div></div>
+        <div class="admin-stat"><div class="num">۳٬۲۱۰</div><div class="label">مشتری ثبت‌شده</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:24px;">
+        <div class="admin-table-wrap">
+          <div style="padding:16px 18px;border-bottom:1px solid var(--border);font-weight:700;color:var(--primary-dark);">آخرین سفارش‌ها</div>
+          <table class="admin-table">
+            <thead><tr><th>کد</th><th>مشتری</th><th>مبلغ</th><th>وضعیت</th></tr></thead>
+            <tbody>
+              <tr><td>HINA-48291</td><td>علی محمدی</td><td>۴٬۸۵۰٬۰۰۰</td><td><span class="status-badge pending">در انتظار</span></td></tr>
+              <tr><td>HINA-48290</td><td>سارا احمدی</td><td>۳٬۲۰۰٬۰۰۰</td><td><span class="status-badge shipped">ارسال شده</span></td></tr>
+              <tr><td>HINA-48289</td><td>رضا کریمی</td><td>۸٬۹۰۰٬۰۰۰</td><td><span class="status-badge delivered">تحویل شده</span></td></tr>
+              <tr><td>HINA-48288</td><td>مریم نوری</td><td>۲٬۴۵۰٬۰۰۰</td><td><span class="status-badge pending">در انتظار</span></td></tr>
+              <tr><td>HINA-48287</td><td>حسین رضایی</td><td>۵٬۶۰۰٬۰۰۰</td><td><span class="status-badge shipped">ارسال شده</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="admin-table-wrap">
+          <div style="padding:16px 18px;border-bottom:1px solid var(--border);font-weight:700;color:var(--primary-dark);">محصولات پرفروش</div>
+          <table class="admin-table">
+            <thead><tr><th>محصول</th><th>فروش</th></tr></thead>
+            <tbody>
+              <tr><td>نایک ایر فورس ۱</td><td>۸۹</td></tr>
+              <tr><td>آدیداس سوپراستار</td><td>۷۲</td></tr>
+              <tr><td>ونس اولد اسکول</td><td>۶۵</td></tr>
+              <tr><td>نیو بالانس ۵۳۰</td><td>۵۸</td></tr>
+              <tr><td>ایر جردن ۴</td><td>۴۱</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

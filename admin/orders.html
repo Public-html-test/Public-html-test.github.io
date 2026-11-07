@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مدیریت سفارش‌ها | HINA Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="logo">
+        <a href="../index.html"><img src="../assets/logo-sm.png" alt="HINA" class="logo-img"></a>
+      </div>
+            <nav class="admin-nav">
+        <a href="index.html">داشبورد</a>
+        <a href="products.html">محصولات</a>
+        <a href="orders.html" class="active">سفارش‌ها</a>
+        <a href="customers.html">مشتریان</a>
+        <a href="content.html">محتوای سایت</a>
+        <a href="reports.html">گزارش‌ها</a>
+        <a href="settings.html">تنظیمات</a>
+        <a href="../index.html" style="margin-top:24px;opacity:0.7;">بازگشت به فروشگاه</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header"><h1>سفارش‌ها</h1></div>
+      <div class="filters-bar" style="margin-bottom:20px;">
+        <select style="padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--cream);">
+          <option>همه وضعیت‌ها</option>
+          <option>در انتظار</option>
+          <option>ارسال شده</option>
+          <option>تحویل شده</option>
+          <option>لغو شده</option>
+        </select>
+        <input type="text" placeholder="جستجوی کد سفارش..." style="padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;width:200px;background:var(--cream);">
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>کد</th><th>مشتری</th><th>تاریخ</th><th>مبلغ</th><th>وضعیت</th><th>عملیات</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HINA-48291</td><td>علی محمدی</td><td>۱۴۰۳/۰۸/۱۵</td><td>۴٬۸۵۰٬۰۰۰</td><td><span class="status-badge pending">در انتظار</span></td><td><button style="color:var(--primary);">جزئیات</button></td></tr>
+            <tr><td>HINA-48290</td><td>سارا احمدی</td><td>۱۴۰۳/۰۸/۱۵</td><td>۳٬۲۰۰٬۰۰۰</td><td><span class="status-badge shipped">ارسال شده</span></td><td><button style="color:var(--primary);">جزئیات</button></td></tr>
+            <tr><td>HINA-48289</td><td>رضا کریمی</td><td>۱۴۰۳/۰۸/۱۴</td><td>۸٬۹۰۰٬۰۰۰</td><td><span class="status-badge delivered">تحویل شده</span></td><td><button style="color:var(--primary);">جزئیات</button></td></tr>
+            <tr><td>HINA-48288</td><td>مریم نوری</td><td>۱۴۰۳/۰۸/۱۴</td><td>۲٬۴۵۰٬۰۰۰</td><td><span class="status-badge pending">در انتظار</span></td><td><button style="color:var(--primary);">جزئیات</button></td></tr>
+            <tr><td>HINA-48287</td><td>حسین رضایی</td><td>۱۴۰۳/۰۸/۱۳</td><td>۵٬۶۰۰٬۰۰۰</td><td><span class="status-badge shipped">ارسال شده</span></td><td><button style="color:var(--primary);">جزئیات</button></td></tr>
+            <tr><td>HINA-48286</td><td>فاطمه حسینی</td><td>۱۴۰۳/۰۸/۱۲</td><td>۷٬۵۰۰٬۰۰۰</td><td><span class="status-badge cancelled">لغو شده</span></td><td><button style="color:var(--primary);">جزئیات</button></td></tr>
+            <tr><td>HINA-48285</td><td>امیر عباسی</td><td>۱۴۰۳/۰۸/۱۲</td><td>۴٬۱۰۰٬۰۰۰</td><td><span class="status-badge delivered">تحویل شده</span></td><td><button style="color:var(--primary);">جزئیات</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

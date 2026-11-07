@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثبت‌نام | HINA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-card">
+      <a href="index.html" class="logo">
+          <img src="assets/logo-lg.png" alt="HINA Shoes" class="logo-img logo-img-lg">
+        </a>
+      <h1>ایجاد حساب کاربری</h1>
+      <p class="subtitle">ثبت‌نام سریع و رایگان</p>
+      <form onsubmit="doRegister(event)">
+        <div class="form-group"><label>نام و نام خانوادگی</label><input type="text" required placeholder="نام کامل" id="regName"></div>
+        <div class="form-group"><label>شماره موبایل</label><input type="tel" required placeholder="۰۹۱۲..." id="regPhone"></div>
+        <div class="form-group"><label>ایمیل (اختیاری)</label><input type="email" placeholder="email@example.com" id="regEmail"></div>
+        <div class="form-group"><label>رمز عبور</label><input type="password" required placeholder="حداقل ۸ کاراکتر" id="regPass"></div>
+        <div class="form-group"><label>تکرار رمز عبور</label><input type="password" required placeholder="تکرار رمز"></div>
+        <label style="font-size:13px;display:flex;gap:8px;margin-bottom:18px;"><input type="checkbox" required> قوانین و حریم خصوصی را می‌پذیرم</label>
+        <button type="submit" class="btn btn-primary btn-block">ثبت‌نام</button>
+      </form>
+      <div class="auth-links">قبلاً ثبت‌نام کرده‌اید؟ <a href="login.html">ورود</a></div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>
+    function doRegister(e) {
+      e.preventDefault();
+      setUser({ name: document.getElementById('regName').value, phone: document.getElementById('regPhone').value, email: document.getElementById('regEmail').value });
+      showToast('ثبت‌نام با موفقیت انجام شد ✓');
+      setTimeout(() => location.href = 'account.html', 1000);
+    }
+  </script>
+</body>
+</html>

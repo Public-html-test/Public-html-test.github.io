@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود | HINA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-card">
+      <a href="index.html" class="logo">
+          <img src="assets/logo-lg.png" alt="HINA Shoes" class="logo-img logo-img-lg">
+        </a>
+      <h1>ورود به حساب</h1>
+      <p class="subtitle">به فروشگاه HINA خوش آمدید</p>
+      <form onsubmit="doLogin(event)">
+        <div class="form-group"><label>شماره موبایل یا ایمیل</label><input type="text" required placeholder="۰۹۱۲... یا email@example.com" id="loginId"></div>
+        <div class="form-group"><label>رمز عبور</label><input type="password" required placeholder="••••••••" id="loginPass"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:13px;">
+          <label><input type="checkbox"> مرا به خاطر بسپار</label>
+          <a href="#" style="color:var(--primary);">فراموشی رمز؟</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">ورود</button>
+      </form>
+      <div class="auth-links">حساب ندارید؟ <a href="register.html">ثبت‌نام کنید</a></div>
+      <div style="text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+        <a href="admin/index.html" style="font-size:13px;color:var(--text-muted);">ورود به پنل مدیریت ←</a>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>
+    function doLogin(e) {
+      e.preventDefault();
+      const id = document.getElementById('loginId').value;
+      setUser({ name: 'کاربر HINA', phone: id, email: id.includes('@') ? id : '' });
+      showToast('ورود موفقیت‌آمیز بود ✓');
+      setTimeout(() => location.href = 'account.html', 1000);
+    }
+  </script>
+</body>
+</html>

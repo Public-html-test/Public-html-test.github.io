@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مدیریت محصولات | HINA Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="logo">
+        <a href="../index.html"><img src="../assets/logo-sm.png" alt="HINA" class="logo-img"></a>
+      </div>
+            <nav class="admin-nav">
+        <a href="index.html">داشبورد</a>
+        <a href="products.html" class="active">محصولات</a>
+        <a href="orders.html">سفارش‌ها</a>
+        <a href="customers.html">مشتریان</a>
+        <a href="content.html">محتوای سایت</a>
+        <a href="reports.html">گزارش‌ها</a>
+        <a href="settings.html">تنظیمات</a>
+        <a href="../index.html" style="margin-top:24px;opacity:0.7;">بازگشت به فروشگاه</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>محصولات</h1>
+        <button class="btn btn-primary btn-sm" type="button" onclick="openAddProduct()">+ افزودن محصول</button>
+      </div>
+      <div class="filters-bar" style="margin-bottom:20px;">
+        <input type="text" id="adminSearch" placeholder="جستجوی محصول..." style="padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;width:240px;background:var(--cream);" oninput="renderAdminTable()">
+        <select id="adminCat" style="padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--cream);" onchange="renderAdminTable()">
+          <option value="">همه دسته‌ها</option>
+          <option value="sport">ورزشی</option>
+          <option value="casual">روزمره</option>
+          <option value="kids">کودک</option>
+          <option value="formal">رسمی</option>
+        </select>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>تصویر</th><th>نام</th><th>برند</th><th>قیمت</th><th>موجودی</th><th>وضعیت</th><th>عملیات</th></tr>
+          </thead>
+          <tbody id="prodTable"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Product Modal -->
+  <div class="admin-modal-overlay" id="addProductModal">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3>افزودن محصول جدید</h3>
+        <button type="button" onclick="closeAddProduct()" style="font-size:24px;color:#666;background:none;border:none;cursor:pointer;">×</button>
+      </div>
+      <div class="admin-modal-body">
+        <form id="addProductForm" onsubmit="saveProduct(event)">
+          <div class="img-upload-zone" id="uploadZone" onclick="document.getElementById('prodImage').click()">
+            <div id="uploadPreview">
+              <svg width="40" height="40" fill="none" stroke="#2F4A38" stroke-width="1.5" viewBox="0 0 24 24" style="margin:0 auto 8px;display:block;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <p style="font-size:14px;color:#2F4A38;font-weight:600;">کلیک برای آپلود تصویر محصول</p>
+              <p style="font-size:12px;color:#888;">JPG, PNG — حداکثر ۲ مگابایت</p>
+            </div>
+          </div>
+          <input type="file" id="prodImage" accept="image/*" style="display:none;" onchange="previewImage(this)">
+
+          <div class="form-group"><label>نام محصول *</label><input type="text" id="prodName" required placeholder="مثلاً نایک ایر فورس ۱"></div>
+          <div class="form-row">
+            <div class="form-group"><label>برند *</label><input type="text" id="prodBrand" required placeholder="Nike"></div>
+            <div class="form-group"><label>کد کالا (SKU)</label><input type="text" id="prodSku" placeholder="HN-001"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>قیمت (تومان) *</label><input type="number" id="prodPrice" required placeholder="4500000"></div>
+            <div class="form-group"><label>قیمت قبل از تخفیف</label><input type="number" id="prodOldPrice" placeholder="اختیاری"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>دسته‌بندی *</label>
+              <select id="prodCat" required>
+                <option value="sport">ورزشی</option>
+                <option value="casual">روزمره / اسنیکر</option>
+                <option value="kids">کودک</option>
+                <option value="formal">رسمی</option>
+              </select>
+            </div>
+            <div class="form-group"><label>موجودی *</label><input type="number" id="prodStock" required value="10" min="0"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>رنگ</label><input type="text" id="prodColor" placeholder="سفید / مشکی"></div>
+            <div class="form-group"><label>جنس</label><input type="text" id="prodMaterial" placeholder="چرم / مش"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>جنسیت</label><input type="text" id="prodGender" placeholder="مردانه / زنانه"></div>
+            <div class="form-group"><label>سایزها (با ویرگول)</label><input type="text" id="prodSizes" placeholder="۳۹,۴۰,۴۱,۴۲,۴۳"></div>
+          </div>
+          <div class="form-group"><label>توضیحات</label><textarea id="prodDesc" rows="3" placeholder="توضیحات محصول..."></textarea></div>
+          <div class="form-group"><label>برچسب</label>
+            <select id="prodBadge">
+              <option value="">بدون برچسب</option>
+              <option value="new">جدید</option>
+              <option value="sale">تخفیف</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:8px;">
+            <button type="submit" class="btn btn-primary" style="flex:1;">ذخیره محصول</button>
+            <button type="button" class="btn btn-cream" style="flex:1;" onclick="closeAddProduct()">انصراف</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="../js/app.js"></script>
+  <script>
+    let extraProducts = JSON.parse(localStorage.getItem('hina_admin_products') || '[]');
+    let previewDataUrl = '';
+
+    function allProducts() { return [...PRODUCTS, ...extraProducts]; }
+
+    function renderAdminTable() {
+      const q = (document.getElementById('adminSearch').value || '').toLowerCase();
+      const cat = document.getElementById('adminCat').value;
+      let list = allProducts();
+      if (cat) list = list.filter(p => p.category === cat);
+      if (q) list = list.filter(p => (p.name + p.brand).toLowerCase().includes(q));
+      document.getElementById('prodTable').innerHTML = list.map(p => `
+        <tr>
+          <td><img src="${p.image}" style="width:48px;height:48px;object-fit:contain;border-radius:8px;background:#F5ECDF;" onerror="this.src='https://via.placeholder.com/48'"></td>
+          <td style="font-weight:600;">${p.name}</td>
+          <td>${p.brand}</td>
+          <td>${formatPrice(p.price)}</td>
+          <td>${p.stock != null ? p.stock : '—'}</td>
+          <td><span class="status-badge delivered">فعال</span></td>
+          <td>
+            <button style="color:var(--primary);margin-left:8px;" type="button">ویرایش</button>
+            <button style="color:var(--danger);" type="button" onclick="showToast('حذف فقط برای محصولات اضافه شده (دمو)')">حذف</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openAddProduct() {
+      document.getElementById('addProductModal').classList.add('open');
+    }
+    function closeAddProduct() {
+      document.getElementById('addProductModal').classList.remove('open');
+      document.getElementById('addProductForm').reset();
+      previewDataUrl = '';
+      document.getElementById('uploadPreview').innerHTML = `
+        <svg width="40" height="40" fill="none" stroke="#2F4A38" stroke-width="1.5" viewBox="0 0 24 24" style="margin:0 auto 8px;display:block;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <p style="font-size:14px;color:#2F4A38;font-weight:600;">کلیک برای آپلود تصویر محصول</p>
+        <p style="font-size:12px;color:#888;">JPG, PNG — حداکثر ۲ مگابایت</p>`;
+    }
+    function previewImage(input) {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        previewDataUrl = e.target.result;
+        document.getElementById('uploadPreview').innerHTML = `<img src="${previewDataUrl}" alt="preview"><p style="font-size:12px;color:#2F4A38;">تصویر انتخاب شد ✓</p>`;
+      };
+      reader.readAsDataURL(file);
+    }
+    function saveProduct(e) {
+      e.preventDefault();
+      const sizes = (document.getElementById('prodSizes').value || '').split(/[,،]/).map(s => s.trim()).filter(Boolean);
+      const p = {
+        id: Date.now(),
+        name: document.getElementById('prodName').value,
+        brand: document.getElementById('prodBrand').value,
+        price: Number(document.getElementById('prodPrice').value),
+        oldPrice: Number(document.getElementById('prodOldPrice').value) || null,
+        category: document.getElementById('prodCat').value,
+        stock: Number(document.getElementById('prodStock').value),
+        color: document.getElementById('prodColor').value,
+        material: document.getElementById('prodMaterial').value,
+        gender: document.getElementById('prodGender').value,
+        sizes: sizes.length ? sizes : ['۴۰','۴۱','۴۲'],
+        sku: document.getElementById('prodSku').value || ('HN-' + Date.now().toString().slice(-4)),
+        desc: document.getElementById('prodDesc').value,
+        badge: document.getElementById('prodBadge').value || null,
+        image: previewDataUrl || 'https://via.placeholder.com/400x400?text=HINA',
+        rating: 5,
+        reviews: 0
+      };
+      extraProducts.push(p);
+      localStorage.setItem('hina_admin_products', JSON.stringify(extraProducts));
+      closeAddProduct();
+      renderAdminTable();
+      showToast('محصول با موفقیت اضافه شد ✓');
+    }
+    document.getElementById('addProductModal').addEventListener('click', function(e) {
+      if (e.target === this) closeAddProduct();
+    });
+    renderAdminTable();
+  </script>
+</body>
+</html>

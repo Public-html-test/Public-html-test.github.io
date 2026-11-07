@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سبد خرید | HINA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+      <div class="top-bar">
+    <div class="container">
+      <span>ارسال رایگان به سراسر کشور</span>
+      <span>خرید مطمئن و آسان</span>
+      <span>ضمانت ۷ روزه بازگشت</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-main header-rtl">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="منو">☰</button>
+        <div class="header-right">
+          <a href="index.html" class="logo">
+            <img src="assets/logo-sm.png" alt="HINA Shoes" class="logo-img">
+          </a>
+          <nav>
+            <ul class="nav-list" id="navList">
+              <li><a href="index.html" class="">صفحه اصلی</a></li>
+              <li>
+                <a href="shop.html" class="active">محصولات <span class="dd-arrow">▾</span></a>
+                <div class="nav-dropdown">
+                  <a href="shop.html">همه محصولات</a>
+                  <a href="shop.html?cat=kids">کفش کودک</a>
+                  <a href="shop.html?cat=sport">کفش ورزشی</a>
+                  <a href="shop.html?cat=casual">روزمره و اسنیکر</a>
+                  <a href="shop.html?cat=formal">رسمی</a>
+                </div>
+              </li>
+              <li><a href="about.html" class="">درباره ما</a></li>
+              <li><a href="contact.html" class="">تماس با ما</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-left">
+          <div class="search-box">
+            <input type="text" placeholder="جستجو در محصولات..." id="searchInput">
+            <button aria-label="جستجو"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+          </div>
+          <div class="auth-links-header">
+            <a href="login.html" class="btn-login">ورود</a>
+            <a href="register.html">ثبت‌نام</a>
+          </div>
+          <div class="header-actions">
+            <a href="account.html"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>حساب</span></a>
+            <a href="cart.html"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>سبد</span><span class="badge" id="cartCount">۰</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="page-hero"><div class="container"><h1>سبد خرید</h1><div class="breadcrumb"><a href="index.html">خانه</a> / <span>سبد خرید</span></div></div></div>
+
+  <section>
+    <div class="container">
+      <div class="cart-layout" id="cartLayout">
+        <div class="cart-table" id="cartItems"></div>
+        <div class="cart-summary" id="cartSummary" style="display:none;">
+          <h3>خلاصه سفارش</h3>
+          <div class="summary-row"><span>جمع محصولات</span><span id="subtotal">۰</span></div>
+          <div class="summary-row"><span>هزینه ارسال</span><span id="shipping">محاسبه در مرحله بعد</span></div>
+          <div class="summary-row total"><span>مبلغ قابل پرداخت</span><span id="total">۰</span></div>
+          <a href="checkout.html" class="btn btn-primary btn-block" style="margin-top:20px;">ادامه و پرداخت</a>
+          <a href="shop.html" class="btn btn-cream btn-block" style="margin-top:10px;">ادامه خرید</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="container"><div class="footer-bottom" style="border:none;"><span>© ۱۴۰۳ HINA</span></div></div></footer>
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>
+    function renderCartPage() {
+      const cart = getCart();
+      const itemsEl = document.getElementById('cartItems');
+      const summary = document.getElementById('cartSummary');
+      if (cart.length === 0) {
+        itemsEl.innerHTML = `<div class="empty-state"><div class="icon">🛒</div><h3>سبد خرید شما خالی است</h3><p>محصولی انتخاب نکرده‌اید</p><a href="shop.html" class="btn btn-primary" style="margin-top:16px;">مشاهده محصولات</a></div>`;
+        summary.style.display = 'none';
+        return;
+      }
+      summary.style.display = 'block';
+      let sub = 0;
+      itemsEl.innerHTML = cart.map(item => {
+        sub += item.price * item.qty;
+        return `
+          <div class="cart-row">
+            <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/72'">
+            <div>
+              <h4 style="font-size:14px;font-weight:700;color:var(--primary-dark);">${item.name}</h4>
+              <p style="font-size:12px;color:var(--text-muted);">سایز: ${item.size}</p>
+            </div>
+            <div class="hide-mobile" style="font-weight:700;color:var(--primary);">${formatPrice(item.price)}</div>
+            <div class="qty-control">
+              <button onclick="changeQty(${item.id},'${item.size}',-1)">−</button>
+              <span>${item.qty.toLocaleString('fa-IR')}</span>
+              <button onclick="changeQty(${item.id},'${item.size}',1)">+</button>
+            </div>
+            <button onclick="removeFromCart(${item.id},'${item.size}')" style="color:var(--danger);font-size:20px;">×</button>
+          </div>`;
+      }).join('');
+      document.getElementById('subtotal').textContent = formatPrice(sub);
+      document.getElementById('total').textContent = formatPrice(sub);
+      document.getElementById('shipping').textContent = sub >= 5000000 ? 'رایگان' : 'محاسبه در مرحله بعد';
+    }
+    renderCartPage();
+  </script>
+</body>
+</html>

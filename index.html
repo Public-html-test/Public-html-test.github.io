@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HINA | فروشگاه تخصصی کفش</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+      <div class="top-bar">
+    <div class="container">
+      <span>ارسال رایگان به سراسر کشور</span>
+      <span>خرید مطمئن و آسان</span>
+      <span>ضمانت ۷ روزه بازگشت</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-main header-rtl">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="منو">☰</button>
+
+        <!-- راست: لوگو + منو -->
+        <div class="header-right">
+          <a href="index.html" class="logo">
+            <img src="/assets/logo-sm.png" alt="HINA Shoes" class="logo-img">
+          </a>
+          <nav>
+            <ul class="nav-list" id="navList">
+              <li><a href="index.html" class="active">صفحه اصلی</a></li>
+              <li>
+                <a href="shop.html">محصولات <span class="dd-arrow">▾</span></a>
+                <div class="nav-dropdown">
+                  <a href="shop.html">همه محصولات</a>
+                  <a href="shop.html?cat=kids">کفش کودک</a>
+                  <a href="shop.html?cat=sport">کفش ورزشی</a>
+                  <a href="shop.html?cat=casual">روزمره و اسنیکر</a>
+                  <a href="shop.html?cat=formal">رسمی</a>
+                </div>
+              </li>
+              <li><a href="about.html">درباره ما</a></li>
+              <li><a href="contact.html">تماس با ما</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- چپ: جستجو + ورود + سبد -->
+        <div class="header-left">
+          <div class="search-box">
+            <input type="text" placeholder="جستجو در محصولات..." id="searchInput">
+            <button aria-label="جستجو" onclick="showToast('جستجو')"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+          </div>
+          <div class="auth-links-header">
+            <a href="login.html" class="btn-login">ورود</a>
+            <a href="register.html">ثبت‌نام</a>
+          </div>
+          <div class="header-actions">
+            <a href="account.html" title="حساب">
+              <svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>حساب</span>
+            </a>
+            <a href="cart.html" title="سبد">
+              <svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <span>سبد</span>
+              <span class="badge" id="cartCount">۰</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="tagline">STEP INTO STYLE</div>
+          <h1>HINA</h1>
+          <p class="subtitle">همراه قدم‌های شما</p>
+          <p>فروش تخصصی کفش با کیفیت، طراحی مدرن و راحتی بی‌نظیر. از کودک تا بزرگسال — هر قدم با استایل.</p>
+          <div class="hero-btns">
+            <a href="shop.html" class="btn btn-primary">مشاهده محصولات</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img id="homeHeroImg" src="/assets/products/nody-مدل-کتونی-جدید-۱۴۰۳-زیبایی-راحتی-این-مدل-ها-خیره-کننده-است-1747641614.jpg" alt="HINA Shoe" class="hero-shoe" onerror="this.src='https://via.placeholder.com/400x320?text=HINA'">
+          <div class="hero-platform"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="features-strip">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <div><h4>پشتیبانی سریع</h4><p>پاسخگویی در کوتاه‌ترین زمان</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div><h4>ضمانت کیفیت</h4><p>اطمینان از خرید شما</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div><h4>ارسال سریع</h4><p>به سراسر کشور</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div><h4>پرداخت امن</h4><p>با خیال راحت خرید کنید</p></div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="cat-duo">
+        <a href="shop.html?cat=kids" class="cat-card-lg">
+          <div class="cat-info">
+            <div class="icon-mono">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </div>
+            <h3>کفش کودک</h3>
+            <p>راحتی و زیبایی برای فرزند دلبندتان</p>
+            <span class="btn btn-cream btn-sm">مشاهده محصولات</span>
+          </div>
+          <div class="cat-img">
+            <img src="/assets/products/nody-مدل-کتونی-جدید-۱۴۰۳-زیبایی-راحتی-این-مدل-ها-خیره-کننده-است-1747641614.jpg" alt="کفش کودک" onerror="this.src='https://via.placeholder.com/200?text=Kids'">
+          </div>
+        </a>
+        <a href="shop.html?cat=sport" class="cat-card-lg">
+          <div class="cat-info">
+            <div class="icon-mono">
+              <svg viewBox="0 0 24 24"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg>
+            </div>
+            <h3>کفش بزرگسال</h3>
+            <p>استایل خاص، کیفیت ماندگار</p>
+            <span class="btn btn-cream btn-sm">مشاهده محصولات</span>
+          </div>
+          <div class="cat-img">
+            <img src="/assets/products/911f1130-54d4-11ee-80d3-ff44d253152a.jpg" alt="کفش بزرگسال" onerror="this.src='https://via.placeholder.com/200?text=Adult'">
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--white);padding:60px 0;">
+    <div class="container">
+      <div class="section-header">
+        <h2>جدیدترین محصولات</h2>
+        <a href="shop.html" class="view-all">مشاهده همه ←</a>
+      </div>
+      <div class="products-grid" id="newProducts"></div>
+    </div>
+  </section>
+
+  <!-- Enhanced Sale Banner -->
+  <section>
+    <div class="container">
+      <div class="sale-banner">
+        <div class="sale-text">
+          <span class="sale-label">OFFER LIMITED</span>
+          <h2>فروش ویژه فصل</h2>
+          <p>تا ۴۰٪ تخفیف روی منتخب محصولات ورزشی و روزمره. فرصت محدود — همین حالا خرید کنید.</p>
+          <a href="shop.html?sale=1" class="btn btn-white">مشاهده تخفیف‌ها</a>
+        </div>
+        <div class="sale-percent">
+          <div class="big">۴۰<span>٪</span></div>
+          <div class="label">تخفیف</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>پرفروش‌ترین‌ها</h2>
+        <a href="shop.html" class="view-all">مشاهده همه ←</a>
+      </div>
+      <div class="products-grid" id="bestProducts"></div>
+    </div>
+  </section>
+
+  <section style="background:var(--white);">
+    <div class="container">
+      <div class="section-header" style="justify-content:center;"><h2 style="text-align:center;">نحوه خرید از HINA</h2></div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">۱</div>
+          <h4>انتخاب محصول</h4>
+          <p>مدل، رنگ و سایز مورد نظر را انتخاب کنید</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">۲</div>
+          <h4>افزودن به سبد</h4>
+          <p>تعداد را مشخص و به سبد اضافه کنید</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">۳</div>
+          <h4>ثبت اطلاعات</h4>
+          <p>آدرس و مشخصات خود را وارد کنید</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">۴</div>
+          <h4>پرداخت آنلاین</h4>
+          <p>از درگاه امن بانکی پرداخت کنید</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="/assets/logo-sm.png" alt="HINA" class="logo-img" style="height:48px;">
+          </a>
+          <p>فروشگاه تخصصی کفش HINA — کیفیت، راحتی و استایل در هر قدم. همراه قدم‌های شما.</p>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="اینستاگرام">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="تلگرام">
+              <svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            </a>
+            <a href="#" aria-label="واتساپ">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>فروشگاه</h4>
+          <ul>
+            <li><a href="shop.html">همه محصولات</a></li>
+            <li><a href="shop.html?cat=kids">کفش کودک</a></li>
+            <li><a href="shop.html?cat=sport">ورزشی</a></li>
+            <li><a href="shop.html?sale=1">تخفیف‌ها</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>خدمات</h4>
+          <ul>
+            <li><a href="faq.html">سوالات متداول</a></li>
+            <li><a href="account.html">پیگیری سفارش</a></li>
+            <li><a href="contact.html">پشتیبانی</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>شرکت</h4>
+          <ul>
+            <li><a href="about.html">درباره ما</a></li>
+            <li><a href="contact.html">تماس با ما</a></li>
+            <li><a href="#">قوانین</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>خبرنامه</h4>
+          <p style="font-size:13px;margin-bottom:12px;opacity:0.85;">از مدل‌های جدید باخبر شوید</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();showToast('عضویت شما ثبت شد ✓');">
+            <input type="email" placeholder="ایمیل شما" required>
+            <button type="submit">عضویت</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© ۱۴۰۳ HINA. تمامی حقوق محفوظ است.</span>
+        <div><a href="#">قوانین</a> · <a href="#">حریم خصوصی</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('newProducts').innerHTML = PRODUCTS.filter(p => p.badge === 'new' || p.id > 8).slice(0, 4).map(createProductCard).join('');
+    document.getElementById('bestProducts').innerHTML = PRODUCTS.slice(0, 4).map(createProductCard).join('');
+  </script>
+
+<script>
+  (function(){
+    try {
+      var c = JSON.parse(localStorage.getItem('hina_site_content') || '{}');
+      if (c.heroImage) {
+        var img = document.getElementById('homeHeroImg');
+        if (img) img.src = c.heroImage;
+      }
+      if (c.bannerTitle) {
+        var el = document.querySelector('.sale-text h2');
+        if (el) el.textContent = c.bannerTitle;
+      }
+      if (c.bannerText) {
+        var el = document.querySelector('.sale-text p');
+        if (el) el.textContent = c.bannerText;
+      }
+      if (c.bannerPercent) {
+        var el = document.querySelector('.sale-percent .big');
+        if (el) el.innerHTML = c.bannerPercent + '<span>٪</span>';
+      }
+    } catch(e) {}
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مدیریت محتوا | HINA Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="logo">
+        <a href="../index.html"><img src="../assets/logo-sm.png" alt="HINA" class="logo-img"></a>
+      </div>
+            <nav class="admin-nav">
+        <a href="index.html">داشبورد</a>
+        <a href="products.html">محصولات</a>
+        <a href="orders.html">سفارش‌ها</a>
+        <a href="customers.html">مشتریان</a>
+        <a href="content.html" class="active">محتوای سایت</a>
+        <a href="reports.html">گزارش‌ها</a>
+        <a href="settings.html">تنظیمات</a>
+        <a href="../index.html" style="margin-top:24px;opacity:0.7;">بازگشت به فروشگاه</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-header"><h1>مدیریت محتوای سایت</h1></div>
+
+      <!-- Tabs -->
+      <div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;">
+        <button type="button" class="btn btn-sm content-tab active" data-tab="hero" onclick="showContentTab('hero',this)">عکس صفحه اصلی</button>
+        <button type="button" class="btn btn-sm content-tab" data-tab="banner" onclick="showContentTab('banner',this)">بنر فروش ویژه</button>
+        <button type="button" class="btn btn-sm content-tab" data-tab="about" onclick="showContentTab('about',this)">درباره ما</button>
+        <button type="button" class="btn btn-sm content-tab" data-tab="contact" onclick="showContentTab('contact',this)">تماس با ما</button>
+      </div>
+
+      <!-- Hero image -->
+      <div class="admin-table-wrap content-panel" id="tab-hero" style="padding:28px;">
+        <h3 style="margin-bottom:16px;color:var(--primary-dark);">عکس هیرو صفحه اصلی</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">این تصویر در کنار متن معرفی در صفحه اول نمایش داده می‌شود.</p>
+        <div class="img-upload-zone" onclick="document.getElementById('heroFile').click()">
+          <div id="heroPreview">
+            <img id="heroPreviewImg" src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80" style="max-height:160px;margin:0 auto 10px;border-radius:12px;object-fit:contain;display:block;">
+            <p style="font-size:13px;color:#2F4A38;">کلیک برای تعویض تصویر</p>
+          </div>
+        </div>
+        <input type="file" id="heroFile" accept="image/*" style="display:none;" onchange="previewHero(this)">
+        <div class="form-group" style="margin-top:16px;">
+          <label>یا آدرس تصویر (URL)</label>
+          <input type="url" id="heroUrl" placeholder="https://...">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="saveHero()">ذخیره عکس صفحه اصلی</button>
+      </div>
+
+      <!-- Banner -->
+      <div class="admin-table-wrap content-panel" id="tab-banner" style="padding:28px;display:none;">
+        <h3 style="margin-bottom:16px;color:var(--primary-dark);">بنر فروش ویژه</h3>
+        <div class="form-group"><label>عنوان بنر</label><input type="text" id="bannerTitle" placeholder="فروش ویژه فصل"></div>
+        <div class="form-group"><label>متن بنر</label><textarea id="bannerText" rows="2" placeholder="تا ۴۰٪ تخفیف..."></textarea></div>
+        <div class="form-group"><label>درصد تخفیف (عدد)</label><input type="text" id="bannerPercent" placeholder="۴۰"></div>
+        <button type="button" class="btn btn-primary" onclick="saveBanner()">ذخیره بنر</button>
+      </div>
+
+      <!-- About -->
+      <div class="admin-table-wrap content-panel" id="tab-about" style="padding:28px;display:none;">
+        <h3 style="margin-bottom:16px;color:var(--primary-dark);">صفحه درباره ما</h3>
+        <div class="form-group"><label>عنوان</label><input type="text" id="aboutTitle" placeholder="داستان ما"></div>
+        <div class="form-group"><label>متن اصلی</label><textarea id="aboutText" rows="5" placeholder="متن درباره ما..."></textarea></div>
+        <div class="form-group"><label>آدرس تصویر درباره ما</label><input type="url" id="aboutImage" placeholder="https://..."></div>
+        <div class="form-row">
+          <div class="form-group"><label>آمار ۱ (مثلاً ۱۰+)</label><input type="text" id="aboutStat1" placeholder="۱۰+"></div>
+          <div class="form-group"><label>برچسب آمار ۱</label><input type="text" id="aboutStat1Label" placeholder="سال سابقه"></div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="saveAbout()">ذخیره درباره ما</button>
+      </div>
+
+      <!-- Contact -->
+      <div class="admin-table-wrap content-panel" id="tab-contact" style="padding:28px;display:none;">
+        <h3 style="margin-bottom:16px;color:var(--primary-dark);">اطلاعات تماس</h3>
+        <div class="form-group"><label>تلفن</label><input type="text" id="contactPhone" placeholder="۰۲۱-۹۱۰۰۱۲۳۴"></div>
+        <div class="form-group"><label>موبایل / واتساپ</label><input type="text" id="contactMobile" placeholder="۰۹۱۲۳۴۵۶۷۸۹"></div>
+        <div class="form-group"><label>آدرس</label><textarea id="contactAddress" rows="2" placeholder="تهران، ..."></textarea></div>
+        <div class="form-group"><label>ایمیل</label><input type="email" id="contactEmail" placeholder="info@hina-shoes.ir"></div>
+        <div class="form-group"><label>اینستاگرام</label><input type="text" id="contactInsta" placeholder="@hina.shoes"></div>
+        <button type="button" class="btn btn-primary" onclick="saveContact()">ذخیره اطلاعات تماس</button>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="../js/app.js"></script>
+  <script>
+    function getContent() {
+      try { return JSON.parse(localStorage.getItem('hina_site_content') || '{}'); } catch { return {}; }
+    }
+    function setContent(c) {
+      localStorage.setItem('hina_site_content', JSON.stringify(c));
+    }
+    function showContentTab(id, btn) {
+      document.querySelectorAll('.content-panel').forEach(p => p.style.display = 'none');
+      document.getElementById('tab-' + id).style.display = 'block';
+      document.querySelectorAll('.content-tab').forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '';
+        b.style.color = '';
+      });
+      if (btn) {
+        btn.classList.add('active');
+        btn.style.background = 'var(--primary)';
+        btn.style.color = '#fff';
+      }
+    }
+    // init tab style
+    document.querySelector('.content-tab.active').style.background = 'var(--primary)';
+    document.querySelector('.content-tab.active').style.color = '#fff';
+
+    function loadForm() {
+      const c = getContent();
+      if (c.heroImage) document.getElementById('heroPreviewImg').src = c.heroImage;
+      if (c.heroImage) document.getElementById('heroUrl').value = c.heroImage.startsWith('data:') ? '' : c.heroImage;
+      document.getElementById('bannerTitle').value = c.bannerTitle || 'فروش ویژه فصل';
+      document.getElementById('bannerText').value = c.bannerText || 'تا ۴۰٪ تخفیف روی منتخب محصولات — فرصت محدود.';
+      document.getElementById('bannerPercent').value = c.bannerPercent || '۴۰';
+      document.getElementById('aboutTitle').value = c.aboutTitle || 'داستان ما';
+      document.getElementById('aboutText').value = c.aboutText || '';
+      document.getElementById('aboutImage').value = c.aboutImage || '';
+      document.getElementById('aboutStat1').value = c.aboutStat1 || '۱۰+';
+      document.getElementById('aboutStat1Label').value = c.aboutStat1Label || 'سال سابقه';
+      document.getElementById('contactPhone').value = c.contactPhone || '۰۲۱-۹۱۰۰۱۲۳۴';
+      document.getElementById('contactMobile').value = c.contactMobile || '۰۹۱۲۳۴۵۶۷۸۹';
+      document.getElementById('contactAddress').value = c.contactAddress || 'تهران، خیابان ولیعصر، پلاک ۴۲';
+      document.getElementById('contactEmail').value = c.contactEmail || 'info@hina-shoes.ir';
+      document.getElementById('contactInsta').value = c.contactInsta || '@hina.shoes';
+    }
+    let heroDataUrl = '';
+    function previewHero(input) {
+      const f = input.files[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = e => {
+        heroDataUrl = e.target.result;
+        document.getElementById('heroPreviewImg').src = heroDataUrl;
+      };
+      r.readAsDataURL(f);
+    }
+    function saveHero() {
+      const c = getContent();
+      const url = document.getElementById('heroUrl').value.trim();
+      c.heroImage = heroDataUrl || url || c.heroImage || '';
+      setContent(c);
+      showToast('عکس صفحه اصلی ذخیره شد ✓');
+    }
+    function saveBanner() {
+      const c = getContent();
+      c.bannerTitle = document.getElementById('bannerTitle').value;
+      c.bannerText = document.getElementById('bannerText').value;
+      c.bannerPercent = document.getElementById('bannerPercent').value;
+      setContent(c);
+      showToast('بنر ذخیره شد ✓');
+    }
+    function saveAbout() {
+      const c = getContent();
+      c.aboutTitle = document.getElementById('aboutTitle').value;
+      c.aboutText = document.getElementById('aboutText').value;
+      c.aboutImage = document.getElementById('aboutImage').value;
+      c.aboutStat1 = document.getElementById('aboutStat1').value;
+      c.aboutStat1Label = document.getElementById('aboutStat1Label').value;
+      setContent(c);
+      showToast('درباره ما ذخیره شد ✓');
+    }
+    function saveContact() {
+      const c = getContent();
+      c.contactPhone = document.getElementById('contactPhone').value;
+      c.contactMobile = document.getElementById('contactMobile').value;
+      c.contactAddress = document.getElementById('contactAddress').value;
+      c.contactEmail = document.getElementById('contactEmail').value;
+      c.contactInsta = document.getElementById('contactInsta').value;
+      setContent(c);
+      showToast('اطلاعات تماس ذخیره شد ✓');
+    }
+    loadForm();
+  </script>
+</body>
+</html>

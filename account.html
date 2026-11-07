@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حساب کاربری | HINA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+      <div class="top-bar">
+    <div class="container">
+      <span>ارسال رایگان به سراسر کشور</span>
+      <span>خرید مطمئن و آسان</span>
+      <span>ضمانت ۷ روزه بازگشت</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-main header-rtl">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="منو">☰</button>
+        <div class="header-right">
+          <a href="index.html" class="logo">
+            <img src="assets/logo-sm.png" alt="HINA Shoes" class="logo-img">
+          </a>
+          <nav>
+            <ul class="nav-list" id="navList">
+              <li><a href="index.html" class="active">صفحه اصلی</a></li>
+              <li>
+                <a href="shop.html" class="">محصولات <span class="dd-arrow">▾</span></a>
+                <div class="nav-dropdown">
+                  <a href="shop.html">همه محصولات</a>
+                  <a href="shop.html?cat=kids">کفش کودک</a>
+                  <a href="shop.html?cat=sport">کفش ورزشی</a>
+                  <a href="shop.html?cat=casual">روزمره و اسنیکر</a>
+                  <a href="shop.html?cat=formal">رسمی</a>
+                </div>
+              </li>
+              <li><a href="about.html" class="">درباره ما</a></li>
+              <li><a href="contact.html" class="">تماس با ما</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-left">
+          <div class="search-box">
+            <input type="text" placeholder="جستجو در محصولات..." id="searchInput">
+            <button aria-label="جستجو"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+          </div>
+          <div class="auth-links-header">
+            <a href="login.html" class="btn-login">ورود</a>
+            <a href="register.html">ثبت‌نام</a>
+          </div>
+          <div class="header-actions">
+            <a href="account.html"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>حساب</span></a>
+            <a href="cart.html"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>سبد</span><span class="badge" id="cartCount">۰</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<section>
+    <div class="container">
+      <div class="dash-layout">
+        <aside class="dash-sidebar">
+          <div class="dash-user">
+            <div class="dash-avatar" id="userAvatar">H</div>
+            <h4 id="userName">کاربر HINA</h4>
+            <p id="userPhone">—</p>
+          </div>
+          <nav class="dash-nav">
+            <a href="#" class="active" onclick="showTab('overview',this)">📊 داشبورد</a>
+            <a href="#" onclick="showTab('orders',this)">📦 سفارش‌های من</a>
+            <a href="#" onclick="showTab('wishlist',this)">♥ علاقه‌مندی‌ها</a>
+            <a href="#" onclick="showTab('addresses',this)">📍 آدرس‌ها</a>
+            <a href="#" onclick="showTab('profile',this)">👤 ویرایش پروفایل</a>
+            <a href="#" onclick="logout()" style="color:var(--danger);margin-top:12px;">خروج</a>
+          </nav>
+        </aside>
+        <div class="dash-content">
+          <div id="tab-overview">
+            <h2>داشبورد</h2>
+            <div class="stat-cards">
+              <div class="stat-card"><span class="num">۳</span><span class="label">سفارش فعال</span></div>
+              <div class="stat-card"><span class="num">۱۲</span><span class="label">کل سفارش‌ها</span></div>
+              <div class="stat-card"><span class="num">۵</span><span class="label">علاقه‌مندی</span></div>
+            </div>
+            <h3 style="font-size:16px;margin-bottom:14px;color:var(--primary-dark);">آخرین سفارش‌ها</h3>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead><tr><th>کد</th><th>تاریخ</th><th>مبلغ</th><th>وضعیت</th></tr></thead>
+                <tbody>
+                  <tr><td>HINA-48291</td><td>۱۴۰۳/۰۸/۱۲</td><td>۴٬۸۵۰٬۰۰۰</td><td><span class="status-badge shipped">ارسال شده</span></td></tr>
+                  <tr><td>HINA-47102</td><td>۱۴۰۳/۰۷/۲۸</td><td>۳٬۲۰۰٬۰۰۰</td><td><span class="status-badge delivered">تحویل شده</span></td></tr>
+                  <tr><td>HINA-45988</td><td>۱۴۰۳/۰۶/۱۵</td><td>۸٬۹۰۰٬۰۰۰</td><td><span class="status-badge delivered">تحویل شده</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="tab-orders" style="display:none;">
+            <h2>سفارش‌های من</h2>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead><tr><th>کد سفارش</th><th>تاریخ</th><th>محصولات</th><th>مبلغ</th><th>وضعیت</th></tr></thead>
+                <tbody>
+                  <tr><td>HINA-48291</td><td>۱۴۰۳/۰۸/۱۲</td><td>نایک ایر فورس ۱</td><td>۴٬۸۵۰٬۰۰۰</td><td><span class="status-badge shipped">ارسال شده</span></td></tr>
+                  <tr><td>HINA-47102</td><td>۱۴۰۳/۰۷/۲۸</td><td>آدیداس سوپراستار</td><td>۳٬۲۰۰٬۰۰۰</td><td><span class="status-badge delivered">تحویل شده</span></td></tr>
+                  <tr><td>HINA-45988</td><td>۱۴۰۳/۰۶/۱۵</td><td>ایر جردن ۴</td><td>۸٬۹۰۰٬۰۰۰</td><td><span class="status-badge delivered">تحویل شده</span></td></tr>
+                  <tr><td>HINA-44120</td><td>۱۴۰۳/۰۵/۰۳</td><td>ونس اولد اسکول</td><td>۲٬۴۵۰٬۰۰۰</td><td><span class="status-badge cancelled">لغو شده</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="tab-wishlist" style="display:none;">
+            <h2>علاقه‌مندی‌ها</h2>
+            <div class="products-grid" id="wishGrid"></div>
+          </div>
+          <div id="tab-addresses" style="display:none;">
+            <h2>آدرس‌های من</h2>
+            <div style="background:var(--cream);padding:20px;border-radius:12px;border:1px solid var(--border);margin-bottom:16px;">
+              <h4 style="font-weight:700;margin-bottom:6px;">آدرس پیش‌فرض</h4>
+              <p style="font-size:14px;color:var(--text-muted);">تهران، خیابان ولیعصر، پلاک ۱۲۳ · کد پستی: ۱۲۳۴۵۶۷۸۹۰</p>
+            </div>
+            <button class="btn btn-outline btn-sm">+ افزودن آدرس جدید</button>
+          </div>
+          <div id="tab-profile" style="display:none;">
+            <h2>ویرایش پروفایل</h2>
+            <form onsubmit="event.preventDefault();showToast('اطلاعات ذخیره شد ✓');" style="max-width:400px;">
+              <div class="form-group"><label>نام و نام خانوادگی</label><input type="text" id="profName" value="کاربر HINA"></div>
+              <div class="form-group"><label>شماره موبایل</label><input type="tel" id="profPhone"></div>
+              <div class="form-group"><label>ایمیل</label><input type="email" id="profEmail"></div>
+              <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="container"><div class="footer-bottom" style="border:none;"><span>© ۱۴۰۳ HINA</span></div></div></footer>
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>
+    const user = getUser();
+    if (!user) {
+      // demo mode - still show page
+    } else {
+      document.getElementById('userName').textContent = user.name || 'کاربر';
+      document.getElementById('userPhone').textContent = user.phone || '—';
+      document.getElementById('userAvatar').textContent = (user.name || 'H')[0];
+      document.getElementById('profName').value = user.name || '';
+      document.getElementById('profPhone').value = user.phone || '';
+      document.getElementById('profEmail').value = user.email || '';
+    }
+    document.getElementById('wishGrid').innerHTML = PRODUCTS.slice(0, 4).map(createProductCard).join('');
+    function showTab(id, el) {
+      ['overview','orders','wishlist','addresses','profile'].forEach(t => {
+        document.getElementById('tab-' + t).style.display = t === id ? 'block' : 'none';
+      });
+      document.querySelectorAll('.dash-nav a').forEach(a => a.classList.remove('active'));
+      if (el) el.classList.add('active');
+    }
+    function logout() {
+      setUser(null);
+      showToast('از حساب خارج شدید');
+      setTimeout(() => location.href = 'login.html', 800);
+    }
+  </script>
+</body>
+</html>

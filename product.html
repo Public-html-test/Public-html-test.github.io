@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جزئیات محصول | HINA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .pd-specs { margin-top: 28px; }
+    .pd-specs h3 { font-size: 16px; font-weight: 800; color: var(--primary-dark); margin-bottom: 12px; }
+    .specs-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .specs-table tr { border-bottom: 1px solid var(--border); }
+    .specs-table td { padding: 10px 0; }
+    .specs-table td:first-child { color: var(--text-muted); width: 40%; }
+    .specs-table td:last-child { font-weight: 600; color: var(--text); }
+    .pd-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .pd-benefit { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); background: var(--cream); padding: 10px 12px; border-radius: 10px; }
+    .pd-benefit svg { width: 18px; height: 18px; stroke: var(--primary); flex-shrink: 0; }
+    .reviews-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-top: 40px; }
+    .review-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .review-item:last-child { border-bottom: none; }
+    .review-item .rev-head { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .review-item .rev-name { font-weight: 700; color: var(--primary-dark); font-size: 14px; }
+    .review-item p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+    .stock-ok { color: var(--primary); font-weight: 600; font-size: 13px; }
+    .stock-low { color: var(--danger); font-weight: 600; font-size: 13px; }
+  </style>
+</head>
+<body>
+    <div class="top-bar">
+    <div class="container">
+      <span>ارسال رایگان به سراسر کشور</span>
+      <span>خرید مطمئن و آسان</span>
+      <span>ضمانت ۷ روزه بازگشت</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="header-main header-rtl">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="منو">☰</button>
+        <div class="header-right">
+          <a href="index.html" class="logo">
+            <img src="assets/logo-sm.png" alt="HINA Shoes" class="logo-img">
+          </a>
+          <nav>
+            <ul class="nav-list" id="navList">
+              <li><a href="index.html" class="">صفحه اصلی</a></li>
+              <li>
+                <a href="shop.html" class="active">محصولات <span class="dd-arrow">▾</span></a>
+                <div class="nav-dropdown">
+                  <a href="shop.html">همه محصولات</a>
+                  <a href="shop.html?cat=kids">کفش کودک</a>
+                  <a href="shop.html?cat=sport">کفش ورزشی</a>
+                  <a href="shop.html?cat=casual">روزمره و اسنیکر</a>
+                  <a href="shop.html?cat=formal">رسمی</a>
+                </div>
+              </li>
+              <li><a href="about.html" class="">درباره ما</a></li>
+              <li><a href="contact.html" class="">تماس با ما</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-left">
+          <div class="search-box">
+            <input type="text" placeholder="جستجو در محصولات..." id="searchInput">
+            <button aria-label="جستجو"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+          </div>
+          <div class="auth-links-header">
+            <a href="login.html" class="btn-login">ورود</a>
+            <a href="register.html">ثبت‌نام</a>
+          </div>
+          <div class="header-actions">
+            <a href="account.html"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>حساب</span></a>
+            <a href="cart.html"><svg viewBox="0 0 24 24" stroke-width="1.75"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>سبد</span><span class="badge" id="cartCount">۰</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<section>
+    <div class="container">
+      <div class="breadcrumb" style="margin-bottom:24px;justify-content:flex-start;color:var(--text-muted);">
+        <a href="index.html">خانه</a> / <a href="shop.html">محصولات</a> / <span id="bcName">محصول</span>
+      </div>
+      <div class="product-detail" id="productDetail"></div>
+
+      <div class="reviews-box" id="reviewsBox">
+        <h3 style="font-size:18px;font-weight:800;color:var(--primary-dark);margin-bottom:16px;">نظرات خریداران</h3>
+        <div id="reviewsList"></div>
+      </div>
+
+      <div style="margin-top:48px;">
+        <div class="section-header"><h2>محصولات مرتبط</h2></div>
+        <div class="products-grid" id="relatedProducts"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border:none;"><span>© ۱۴۰۳ HINA. تمامی حقوق محفوظ است.</span></div>
+    </div>
+  </footer>
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+  <script>
+    const id = parseInt(new URLSearchParams(location.search).get('id')) || 1;
+    const p = PRODUCTS.find(x => x.id === id) || PRODUCTS[0];
+    document.title = p.name + ' | HINA';
+    document.getElementById('bcName').textContent = p.name;
+
+    let selectedSize = (p.sizes && p.sizes[0]) || '';
+    let qty = 1;
+
+    const catNames = { sport: 'ورزشی', casual: 'روزمره', kids: 'کودک', formal: 'رسمی' };
+
+    function renderPD() {
+      const old = p.oldPrice ? `<span class="old">${formatPrice(p.oldPrice)}</span>` : '';
+      const stockHtml = (p.stock || 0) > 10
+        ? `<span class="stock-ok">✓ موجود در انبار (${p.stock} عدد)</span>`
+        : `<span class="stock-low">⚠ موجودی محدود (${p.stock || 0} عدد)</span>`;
+
+      document.getElementById('productDetail').innerHTML = `
+        <div class="pd-gallery">
+          <div class="pd-main-img"><img src="${p.image}" alt="${p.name}" id="mainImg" onerror="this.src='https://via.placeholder.com/400?text=HINA'"></div>
+          <div class="pd-thumbs">
+            <div class="pd-thumb active" onclick="document.getElementById('mainImg').src='${p.image}'"><img src="${p.image}" alt=""></div>
+          </div>
+        </div>
+        <div class="pd-info">
+          <div class="pd-brand">${p.brand}</div>
+          <h1>${p.name}</h1>
+          <div class="pd-rating">
+            <span class="stars">${renderStars(p.rating)}</span>
+            <span>${p.rating} · ${p.reviews.toLocaleString('fa-IR')} نظر</span>
+          </div>
+          <div class="pd-price">${old}${formatPrice(p.price)}</div>
+          <div style="margin-bottom:16px;">${stockHtml}</div>
+
+          <div class="size-selector">
+            <h4>انتخاب سایز</h4>
+            <div class="size-options" id="sizeOpts">
+              ${(p.sizes || []).map(s => `<button type="button" class="size-opt ${s===selectedSize?'active':''}" data-size="${s}">${s}</button>`).join('')}
+            </div>
+          </div>
+
+          <div class="qty-row">
+            <div class="qty-control">
+              <button type="button" id="qtyMinus">−</button>
+              <span id="qtyVal">${qty.toLocaleString('fa-IR')}</span>
+              <button type="button" id="qtyPlus">+</button>
+            </div>
+          </div>
+
+          <div class="pd-actions">
+            <button type="button" class="btn btn-primary" style="flex:1;" id="btnAddCart">افزودن به سبد</button>
+            <button type="button" class="btn btn-outline" id="btnBuyNow">خرید فوری</button>
+          </div>
+
+          <div class="pd-benefits">
+            <div class="pd-benefit">
+              <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              ضمانت اصالت کالا
+            </div>
+            <div class="pd-benefit">
+              <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              ۷ روز بازگشت
+            </div>
+            <div class="pd-benefit">
+              <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              ارسال سریع
+            </div>
+            <div class="pd-benefit">
+              <svg fill="none" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              پرداخت امن
+            </div>
+          </div>
+
+          <div class="pd-desc">
+            <h3>توضیحات محصول</h3>
+            <p>${p.desc || ''}</p>
+          </div>
+
+          <div class="pd-specs">
+            <h3>مشخصات فنی</h3>
+            <table class="specs-table">
+              <tr><td>برند</td><td>${p.brand}</td></tr>
+              <tr><td>کد کالا</td><td>${p.sku || '—'}</td></tr>
+              <tr><td>دسته‌بندی</td><td>${catNames[p.category] || p.category}</td></tr>
+              <tr><td>رنگ</td><td>${p.color || '—'}</td></tr>
+              <tr><td>جنس</td><td>${p.material || '—'}</td></tr>
+              <tr><td>جنسیت</td><td>${p.gender || '—'}</td></tr>
+              <tr><td>سایزهای موجود</td><td>${(p.sizes || []).join(' · ')}</td></tr>
+            </table>
+          </div>
+        </div>`;
+
+      document.querySelectorAll('.size-opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedSize = btn.dataset.size;
+          document.querySelectorAll('.size-opt').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+      document.getElementById('qtyMinus').onclick = () => { qty = Math.max(1, qty - 1); document.getElementById('qtyVal').textContent = qty.toLocaleString('fa-IR'); };
+      document.getElementById('qtyPlus').onclick = () => { qty = Math.min(p.stock || 99, qty + 1); document.getElementById('qtyVal').textContent = qty.toLocaleString('fa-IR'); };
+      document.getElementById('btnAddCart').onclick = () => {
+        if (!selectedSize) { showToast('لطفاً سایز را انتخاب کنید'); return; }
+        addToCart(p.id, selectedSize, qty);
+      };
+      document.getElementById('btnBuyNow').onclick = () => {
+        if (!selectedSize) { showToast('لطفاً سایز را انتخاب کنید'); return; }
+        addToCart(p.id, selectedSize, qty);
+        setTimeout(() => location.href = 'cart.html', 400);
+      };
+    }
+
+    renderPD();
+
+    // Related
+    const related = PRODUCTS.filter(x => x.id !== p.id && x.category === p.category).slice(0, 4);
+    document.getElementById('relatedProducts').innerHTML =
+      (related.length ? related : PRODUCTS.filter(x => x.id !== p.id).slice(0, 4)).map(createProductCard).join('');
+
+    // Fake reviews
+    const sampleReviews = [
+      { name: 'علی م.', stars: 5, text: 'کیفیت عالی و ارسال سریع. دقیقاً همون چیزی که انتظار داشتم.' },
+      { name: 'سارا ر.', stars: 4, text: 'زیبا و راحت. سایزبندی دقیق بود.' },
+      { name: 'رضا ک.', stars: 5, text: 'بسته‌بندی مرتب و اصالت کالا مشخص بود. پیشنهاد می‌کنم.' }
+    ];
+    document.getElementById('reviewsList').innerHTML = sampleReviews.map(r => `
+      <div class="review-item">
+        <div class="rev-head">
+          <span class="rev-name">${r.name}</span>
+          <span class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</span>
+        </div>
+        <p>${r.text}</p>
+      </div>
+    `).join('');
+  </script>
+</body>
+</html>
